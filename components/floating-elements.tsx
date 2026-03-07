@@ -69,7 +69,7 @@ export function FloatingElements() {
             >
               {/* Phone */}
               <motion.a
-                href="tel:+40700000000"
+                href="tel:+40755295009"
                 className="w-12 h-12 rounded-full bg-secondary text-secondary-foreground shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -82,7 +82,7 @@ export function FloatingElements() {
 
         {/* WhatsApp button */}
         <motion.a
-          href="https://wa.me/40700000000"
+          href="https://wa.me/40755295009"
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 rounded-full bg-green-500 text-white shadow-lg shadow-green-500/30 flex items-center justify-center hover:scale-110 transition-transform"
@@ -102,13 +102,14 @@ export function FloatingElements() {
         className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-lg border-t border-border z-40 sm:hidden"
       >
         <a
-          href="tel:+40700000000"
+          href="#contact-form"
           className="flex items-center justify-center gap-2 w-full py-4 bg-primary text-primary-foreground rounded-xl font-semibold shadow-lg shadow-primary/25"
         >
           <Phone className="w-5 h-5" />
-          Sună pentru ofertă gratuită
+          Solicită ofertă gratuită
         </a>
       </motion.div>
     </>
   )
 }
+

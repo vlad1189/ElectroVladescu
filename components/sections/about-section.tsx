@@ -112,7 +112,7 @@ export function AboutSection() {
                     }`}
                   >
                     <div className={`md:w-5/12 ${index % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}>
-                      <div className="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 group">
+                      <div className="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 group md:inline-block md:w-fit md:max-w-[26rem]">
                         <span className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-bold mb-3">
                           {item.year}
                         </span>

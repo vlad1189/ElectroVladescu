@@ -95,7 +95,7 @@ export function Header() {
                 asChild
                 className="hidden sm:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                <a href="tel:+40700000000">
+                <a href="tel:+40755295009">
                   <Phone className="w-4 h-4 mr-2" />
                   Sună acum
                 </a>
@@ -141,7 +141,7 @@ export function Header() {
                   </a>
                 ))}
                 <a
-                  href="tel:+40700000000"
+                  href="tel:+40755295009"
                   className="mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground rounded-xl font-medium"
                 >
                   <Phone className="w-5 h-5" />
@@ -155,3 +155,4 @@ export function Header() {
     </>
   )
 }
+

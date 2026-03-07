@@ -82,7 +82,9 @@ const services = [
 export function ServicesSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
+  const visibleServices = services.filter(
+    (service) => service.icon !== Settings2 && service.icon !== Sparkles
+  )
   return (
     <section id="servicii" className="py-24 bg-background relative">
       <div className="container mx-auto px-4" ref={ref}>
@@ -103,33 +105,35 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          {visibleServices.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               whileHover={{ y: -8, scale: 1.02 }}
+              whileTap={{ y: -6, scale: 1.01 }}
               className="group relative"
             >
-              <div className="h-full p-6 bg-card rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+              <div className="h-full p-4 sm:p-6 bg-card rounded-xl sm:rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 active:border-primary/50 active:shadow-xl active:shadow-primary/10">
                 {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 group-active:opacity-5 transition-opacity duration-300`} />
                 
                 <div className="relative z-10">
                   <motion.div
                     whileHover={{ rotate: [0, -10, 10, 0] }}
+                    whileTap={{ rotate: [0, -8, 8, 0], scale: 1.06 }}
                     transition={{ duration: 0.5 }}
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 shadow-lg`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg`}
                   >
-                    <service.icon className="w-7 h-7 text-white" />
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </motion.div>
                   
-                  <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 group-hover:text-primary group-active:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-snug sm:leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -144,3 +148,4 @@ export function ServicesSection() {
     </section>
   )
 }
+

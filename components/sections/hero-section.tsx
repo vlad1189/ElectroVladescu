@@ -110,7 +110,7 @@ export function HeroSection() {
                 className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300"
                 asChild
               >
-                <a href="tel:+40700000000">
+                <a href="tel:+40755295009">
                   <Phone className="w-5 h-5 mr-2" />
                   Sună acum
                 </a>
@@ -276,3 +276,4 @@ export function HeroSection() {
     </section>
   )
 }
+

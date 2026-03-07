@@ -60,8 +60,8 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Sună-ne direct</p>
-                  <a href="tel:+40700000000" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
-                    +40 700 000 000
+                  <a href="tel:+40755295009" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
+                    +40 755 295 009
                   </a>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export function ContactSection() {
             {/* Other contact methods */}
             <div className="grid sm:grid-cols-2 gap-4">
               <a
-                href="https://wa.me/40700000000"
+                href="https://wa.me/40755295009"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border hover:border-green-500/50 transition-all duration-300 group"
@@ -144,7 +144,7 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="bg-card rounded-3xl border border-border p-8 shadow-xl">
+            <div id="contact-form" className="scroll-mt-28 bg-card rounded-3xl border border-border p-8 shadow-xl">
               <h3 className="text-2xl font-bold text-foreground mb-2">Solicită ofertă gratuită</h3>
               <p className="text-muted-foreground mb-8">Completează formularul și te contactăm în cel mai scurt timp</p>
 
@@ -177,7 +177,7 @@ export function ContactSection() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+40 700 000 000"
+                        placeholder="+40 755 295 009"
                         required
                         className="h-12"
                       />
@@ -234,3 +234,5 @@ export function ContactSection() {
     </section>
   )
 }
+
+

@@ -78,7 +78,7 @@ export function WhyChooseSection() {
                 Solicită ofertă gratuită
               </a>
               <a
-                href="tel:+40700000000"
+                href="tel:+40755295009"
                 className="inline-flex items-center justify-center px-8 py-4 bg-card border-2 border-border text-foreground rounded-xl font-semibold hover:border-primary/50 transition-colors"
               >
                 Sună acum
@@ -119,3 +119,4 @@ export function WhyChooseSection() {
     </section>
   )
 }
+

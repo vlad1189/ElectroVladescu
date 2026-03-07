@@ -126,9 +126,9 @@ export function FooterSection() {
             </h4>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+40700000000" className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm">
+                <a href="tel:+40755295009" className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm">
                   <Phone className="w-4 h-4 flex-shrink-0" />
-                  +40 700 000 000
+                  +40 755 295 009
                 </a>
               </li>
               <li>
@@ -162,3 +162,5 @@ export function FooterSection() {
     </footer>
   )
 }
+
+
