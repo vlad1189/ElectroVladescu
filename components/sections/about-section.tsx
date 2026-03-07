@@ -74,33 +74,37 @@ export function AboutSection() {
           <h3 className="text-2xl font-bold text-center text-foreground mb-12">Experiența noastră</h3>
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent rounded-full hidden md:block" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent rounded-full" />
             
-            <div className="space-y-8 md:space-y-0">
+            <div className="space-y-6 md:space-y-0">
               {timeline.map((item, index) => (
                 <motion.div
                   key={item.year}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                  className={`relative md:flex md:items-center md:justify-between ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  className={`relative flex items-center justify-between ${
+                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
-                  <div className={`md:w-5/12 ${index % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}>
-                    <div className="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 group">
+                  <div
+                    className={`w-[calc(50%-1.1rem)] md:w-5/12 ${
+                      index % 2 === 0 ? "text-right pr-4 md:pr-12" : "text-left pl-4 md:pl-12"
+                    }`}
+                  >
+                    <div className="p-3 sm:p-4 md:p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 group">
                       <span className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-bold mb-3">
                         {item.year}
                       </span>
-                      <h4 className="text-xl font-semibold text-foreground mb-2">{item.title}</h4>
-                      <p className="text-muted-foreground">{item.description}</p>
+                      <h4 className="text-base sm:text-lg md:text-xl font-semibold text-foreground mb-2">{item.title}</h4>
+                      <p className="text-sm md:text-base text-muted-foreground">{item.description}</p>
                     </div>
                   </div>
                   
                   {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background hidden md:block z-10" />
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" />
                   
-                  <div className="md:w-5/12" />
+                  <div className="w-[calc(50%-1.1rem)] md:w-5/12" />
                 </motion.div>
               ))}
             </div>
