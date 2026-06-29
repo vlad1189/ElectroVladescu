@@ -15,21 +15,62 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ElectroVlădescu S.R.L. | Electrician Profesionist România',
-  description: 'Instalații electrice profesionale pentru locuințe și spații comerciale. Electrician autorizat cu experiență - panouri electrice, instalații complete, iluminat LED. Cu noi aduci casa la lumină!',
-  keywords: 'electrician, instalații electrice, panou electric, instalație casă, electrician autorizat, România, iluminat LED, automatizări electrice',
+  title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
+  description: 'Electrician autorizat Tulcea - ElectroVlădescu. Instalații electrice complete, panouri electrice, iluminat LED, automatizări. Intervenții rapide în Tulcea, Delta Dunării și împrejurimi. Solicită ofertă gratuită!',
+  keywords: 'electrician tulcea, instalații electrice tulcea, electrician autorizat tulcea, panou electric tulcea, instalație casă tulcea, iluminat LED tulcea, automatizări electrice, electrician delta dunării, electrovladescu, instalații electrice românia, electrician profesionist, tablou electric, prize și întrerupătoare, iluminat interior exterior',
   authors: [{ name: 'ElectroVlădescu S.R.L.' }],
-  openGraph: {
-    title: 'ElectroVlădescu S.R.L. | Electrician Profesionist',
-    description: 'Instalații electrice sigure, moderne și realizate ca la carte. Solicită ofertă gratuită!',
-    type: 'website',
-    locale: 'ro_RO',
+  creator: 'ElectroVlădescu S.R.L.',
+  publisher: 'ElectroVlădescu S.R.L.',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  robots: 'index, follow',
+  metadataBase: new URL('https://electrovladescu.ro'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
+    description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED. Intervenții rapide în Tulcea și Delta Dunării.',
+    url: 'https://electrovladescu.ro',
+    siteName: 'ElectroVlădescu',
+    locale: 'ro_RO',
+    type: 'website',
+    images: [
+      {
+        url: '/images/logo.jpg',
+        width: 800,
+        height: 600,
+        alt: 'ElectroVlădescu - Electrician Tulcea',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
+    description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED.',
+    images: ['/images/logo.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Adaugă codul din Google Search Console
+  },
   icons: {
     icon: '/images/logo.jpg',
     apple: '/images/logo.jpg',
   },
+  category: 'business',
 }
 
 export const viewport = {
@@ -41,13 +82,135 @@ export const viewport = {
   initialScale: 1,
 }
 
+// Structured data for local business SEO
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ElectroVlădescu S.R.L.",
+  "alternateName": "Electrician Tulcea",
+  "image": "https://electrovladescu.ro/images/logo.jpg",
+  "telephone": "+40755295009",
+  "email": "contact@electrovladescu.ro",
+  "url": "https://electrovladescu.ro",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tulcea",
+    "addressRegion": "Tulcea",
+    "addressCountry": "RO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.1786,
+    "longitude": 28.8053
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Tulcea"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Județul Tulcea"
+    },
+    {
+      "@type": "Place",
+      "name": "Delta Dunării"
+    }
+  ],
+  "priceRange": "$$",
+  "description": "Electrician autorizat ANRE în Tulcea. Oferim servicii complete de instalații electrice pentru locuințe și spații comerciale: panouri electrice, instalații complete, iluminat LED, automatizări electrice.",
+  "founder": {
+    "@type": "Person",
+    "name": "Cristi Vlădescu"
+  },
+  "sameAs": [
+    "https://www.facebook.com/Electrovladescu"
+  ]
+}
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Instalații Electrice",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "ElectroVlădescu S.R.L."
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Tulcea"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicii Electrice",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Instalații electrice complete",
+          "description": "Proiectare și execuție instalații electrice de la zero pentru construcții noi."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Panouri electrice profesionale",
+          "description": "Montaj și configurare tablouri electrice conform normativelor în vigoare."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Iluminat interior și exterior",
+          "description": "Soluții complete de iluminat LED pentru case, grădini și spații comerciale."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automatizări electrice",
+          "description": "Sisteme de automatizare pentru confort și eficiență energetică."
+        }
+      }
+    ]
+  }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ro" suppressHydrationWarning>
+    <html lang="ro">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"

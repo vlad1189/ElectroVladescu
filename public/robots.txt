@@ -1,0 +1,16 @@
+# Robots.txt for ElectroVlădescu
+# Electrician Tulcea - https://electrovladescu.ro
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://electrovladescu.ro/sitemap.xml
+
+# Crawl-delay (optional, for slower crawling)
+# Crawl-delay: 10
+
+# Block access to certain paths if needed
+# Disallow: /api/
+# Disallow: /_next/
+# Disallow: /admin/
