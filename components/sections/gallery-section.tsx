@@ -2,52 +2,89 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, useCallback, useEffect } from "react"
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
 import Image from "next/image"
 
 const galleryItems = [
-  {
+   {
     id: 1,
-    title: "Tablou Electric Modern",
-    category: "Panouri",
-    before: "Tablou vechi dezorganizat",
-    after: "Panou profesional cu siguranțe automate",
+    title: "Iluminat Lampi exterioare",
+    category: "Iluminat",
+    image: "/images/iluminat-frumos.jpg",
   },
+
   {
     id: 2,
-    title: "Instalație Apartament",
+    title: "Instalație Casa Noua",
     category: "Instalații",
-    before: "Cabluri vechi deteriorate",
-    after: "Instalație nouă cu cabluri cupru",
+    image: "/images/in-actiune2.jpg",
   },
-  {
+   {
     id: 3,
-    title: "Iluminat LED Bucătărie",
-    category: "Iluminat",
-    before: "Iluminat clasic slab",
-    after: "Bandă LED sub mobilier",
+    title: "Tablou Electric Modern",
+    category: "Panouri",
+    image: "/images/panou-frumos.jpg",
   },
   {
     id: 4,
-    title: "Panou Industrial",
+    title: "Panou Electric ",
     category: "Panouri",
-    before: "Tablou subdimensionat",
-    after: "Panou industrial complet",
+    image: "/images/panou.jpg",
   },
   {
     id: 5,
-    title: "Prize și Întrerupătoare",
+    title: "Iluminat Lampi exterioare",
     category: "Accesorii",
-    before: "Prize vechi îngălbenite",
-    after: "Prize și întrerupătoare premium",
+    image: "/images/iluminat-4.jpg",
   },
   {
     id: 6,
-    title: "Iluminat Exterior",
+    title: "Iluminat Lampi exterioare",
     category: "Iluminat",
-    before: "Fără iluminat exterior",
-    after: "Spoturi LED perimetrale",
+    image: "/images/iluminat-6.jpg",
+  },
+  {
+    id: 7,
+    title: "Iluminat Interior",
+    category: "Iluminat",
+    image: "/images/iluminat-2.jpg",
+  },
+  {
+    id: 8,
+    title: "Iluminat Parcare Subterana",
+    category: "Iluminat",
+    image: "/images/iluminat-3.jpg",
+  },
+  {
+    id: 9,
+    title: "Iluminat Interior",
+    category: "Iluminat",
+    image: "/images/iluminat.jpg",
+  },
+  {
+    id: 10,
+    title: "Iluminat Interior",
+    category: "Iluminat",
+    image: "/images/iluminat-hala.jpg",
+  },
+    {
+    id: 11,
+    title: "Instalație Casa",
+    category: "Instalații",
+    image: "/images/in-actiune.jpg",
+  },
+    {
+    id: 1,
+    title: "Tablou Electric Modern",
+    category: "Panouri",
+    image: "/images/tablou.jpg",
+  },
+   {
+    id: 8,
+    title: "Iluminat Parcare Subterana",
+    category: "Iluminat",
+    image: "/images/parcare.jpg",
   },
 ]
 
@@ -57,23 +94,39 @@ export function GallerySection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [selectedCategory, setSelectedCategory] = useState("Toate")
-  const [lightboxItem, setLightboxItem] = useState<number | null>(null)
-  const [showAfter, setShowAfter] = useState<Record<number, boolean>>({})
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const filteredItems = selectedCategory === "Toate" 
     ? galleryItems 
     : galleryItems.filter(item => item.category === selectedCategory)
 
-  const currentLightboxItem = lightboxItem !== null ? galleryItems.find(item => item.id === lightboxItem) : null
+  const currentLightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null
 
-  const navigateLightbox = (direction: 'prev' | 'next') => {
-    if (lightboxItem === null) return
-    const currentIndex = filteredItems.findIndex(item => item.id === lightboxItem)
-    let newIndex = direction === 'prev' ? currentIndex - 1 : currentIndex + 1
+  const navigateLightbox = useCallback((direction: 'prev' | 'next') => {
+    if (lightboxIndex === null) return
+    let newIndex = direction === 'prev' ? lightboxIndex - 1 : lightboxIndex + 1
     if (newIndex < 0) newIndex = filteredItems.length - 1
     if (newIndex >= filteredItems.length) newIndex = 0
-    setLightboxItem(filteredItems[newIndex].id)
-  }
+    setLightboxIndex(newIndex)
+  }, [lightboxIndex, filteredItems.length])
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (lightboxIndex === null) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setLightboxIndex(null)
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox('prev')
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox('next')
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxIndex, navigateLightbox])
 
   return (
     <section id="galerie" className="py-24 bg-muted/30 relative">
@@ -91,7 +144,7 @@ export function GallerySection() {
             Galerie Lucrări
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Vezi transformările realizate de echipa noastră - înainte și după
+            Descoperă proiectele noastre și calitatea lucrărilor executate
           </p>
 
           {/* Category filter */}
@@ -127,38 +180,24 @@ export function GallerySection() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-border cursor-pointer"
-                onClick={() => setLightboxItem(item.id)}
+                onClick={() => setLightboxIndex(index)}
               >
-                {/* Placeholder for before/after images */}
-                <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted/80 to-card flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                      <ZoomIn className="w-8 h-8 text-primary" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {showAfter[item.id] ? item.after : item.before}
-                    </p>
-                  </div>
-                </div>
+                {/* Image */}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <span className="text-xs text-primary font-medium mb-1">{item.category}</span>
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setShowAfter(prev => ({ ...prev, [item.id]: !prev[item.id] }))
-                    }}
-                    className="mt-3 px-3 py-1.5 text-xs font-medium bg-primary/20 text-primary rounded-full hover:bg-primary/30 transition-colors w-fit"
-                  >
-                    {showAfter[item.id] ? "Vezi înainte" : "Vezi după"}
-                  </button>
-                </div>
-
-                {/* Before/After badge */}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium">
-                  {showAfter[item.id] ? "După" : "Înainte"}
+                  <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
+                    <ZoomIn className="w-4 h-4" />
+                    <span>Click pentru a mări</span>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -166,65 +205,78 @@ export function GallerySection() {
         </motion.div>
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox - Fullscreen */}
       <AnimatePresence>
-        {lightboxItem !== null && currentLightboxItem && (
+        {lightboxIndex !== null && currentLightboxItem && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-background/95 backdrop-blur-md z-50 flex items-center justify-center"
-            onClick={() => setLightboxItem(null)}
+            className="fixed inset-0 bg-background/98 backdrop-blur-sm z-50 flex items-center justify-center"
+            onClick={() => setLightboxIndex(null)}
           >
             {/* Close button */}
             <button 
-              className="absolute top-6 right-6 p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-              onClick={() => setLightboxItem(null)}
+              className="absolute top-6 right-6 p-3 rounded-full bg-background/80 hover:bg-background transition-colors z-10 border border-border"
+              onClick={() => setLightboxIndex(null)}
+              aria-label="Închide"
             >
               <X className="w-6 h-6" />
             </button>
 
-            {/* Navigation */}
-            <button 
-              className="absolute left-6 p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-              onClick={(e) => { e.stopPropagation(); navigateLightbox('prev') }}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button 
-              className="absolute right-6 p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-              onClick={(e) => { e.stopPropagation(); navigateLightbox('next') }}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            {/* Navigation buttons */}
+            {filteredItems.length > 1 && (
+              <>
+                <button 
+                  className="absolute left-4 md:left-6 p-3 rounded-full bg-background/80 hover:bg-background transition-colors z-10 border border-border"
+                  onClick={(e) => { e.stopPropagation(); navigateLightbox('prev') }}
+                  aria-label="Imaginea anterioară"
+                >
+                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+                <button 
+                  className="absolute right-4 md:right-6 p-3 rounded-full bg-background/80 hover:bg-background transition-colors z-10 border border-border"
+                  onClick={(e) => { e.stopPropagation(); navigateLightbox('next') }}
+                  aria-label="Imaginea următoare"
+                >
+                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+              </>
+            )}
 
-            {/* Content */}
+            {/* Image container */}
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="max-w-4xl w-full mx-8 p-8 bg-card rounded-3xl border border-border"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full h-full flex items-center justify-center p-4 md:p-8"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-video rounded-xl bg-muted flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <ZoomIn className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">
-                    {showAfter[currentLightboxItem.id] ? currentLightboxItem.after : currentLightboxItem.before}
-                  </p>
-                </div>
+              <div className="relative max-w-6xl w-full max-h-[85vh] flex items-center justify-center">
+                <Image
+                  src={currentLightboxItem.image}
+                  alt={currentLightboxItem.title}
+                  width={1200}
+                  height={900}
+                  className="max-h-[85vh] w-auto object-contain rounded-lg shadow-2xl"
+                  priority
+                />
               </div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-sm text-primary font-medium">{currentLightboxItem.category}</span>
-                  <h3 className="text-2xl font-bold text-foreground">{currentLightboxItem.title}</h3>
-                </div>
-                <button
-                  onClick={() => setShowAfter(prev => ({ ...prev, [currentLightboxItem.id]: !prev[currentLightboxItem.id] }))}
-                  className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors"
-                >
-                  {showAfter[currentLightboxItem.id] ? "Vezi înainte" : "Vezi după"}
-                </button>
+
+              {/* Info bar at bottom */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-background/90 backdrop-blur-md rounded-full border border-border flex items-center gap-4">
+                <span className="text-sm text-primary font-medium">{currentLightboxItem.category}</span>
+                <span className="text-muted-foreground">•</span>
+                <span className="text-sm text-foreground font-medium">{currentLightboxItem.title}</span>
+                {filteredItems.length > 1 && (
+                  <>
+                    <span className="text-muted-foreground">•</span>
+                    <span className="text-sm text-muted-foreground">
+                      {lightboxIndex + 1} / {filteredItems.length}
+                    </span>
+                  </>
+                )}
               </div>
             </motion.div>
           </motion.div>

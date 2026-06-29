@@ -57,63 +57,7 @@ export function FacebookSection() {
           </p>
         </motion.div>
 
-        {/* Facebook posts preview */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {fakePosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300"
-            >
-              {/* Post header */}
-              <div className="p-4 border-b border-border">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
-                    <Facebook className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm">ElectroVlădescu</p>
-                    <p className="text-xs text-muted-foreground">{post.date}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Post content */}
-              <div className="p-4">
-                <p className="text-foreground/80 text-sm leading-relaxed mb-4">
-                  {post.content}
-                </p>
-                
-                {/* Placeholder image */}
-                <div className="aspect-video rounded-lg bg-muted flex items-center justify-center">
-                  <Facebook className="w-12 h-12 text-muted-foreground/30" />
-                </div>
-              </div>
-
-              {/* Post stats */}
-              <div className="px-4 py-3 border-t border-border">
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1">
-                      <ThumbsUp className="w-4 h-4" />
-                      {post.likes}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MessageCircle className="w-4 h-4" />
-                      {post.comments}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Share2 className="w-4 h-4" />
-                      {post.shares}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        
 
         {/* CTA */}
         <motion.div

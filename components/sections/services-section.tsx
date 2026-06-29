@@ -54,12 +54,6 @@ const services = [
     color: "from-accent to-primary"
   },
   {
-    icon: Search,
-    title: "Diagnostic și reparații",
-    description: "Identificarea și remedierea rapidă a problemelor electrice.",
-    color: "from-primary/80 to-secondary/80"
-  },
-  {
     icon: Home,
     title: "Instalații pentru case noi",
     description: "Soluții complete pentru construcții rezidențiale noi.",
@@ -86,8 +80,30 @@ export function ServicesSection() {
     (service) => service.icon !== Settings2 && service.icon !== Sparkles
   )
   return (
-    <section id="servicii" className="py-24 bg-background relative">
-      <div className="container mx-auto px-4" ref={ref}>
+    <section id="servicii" className="py-24 bg-background relative overflow-hidden">
+      {/* Background image with subtle overlay - responsive for mobile and desktop */}
+      {/* Mobile background - visible only on mobile */}
+      <div 
+        className="md:hidden absolute inset-0 z-0 opacity-[0.45] dark:opacity-[0.2] pointer-events-none"
+        style={{
+          backgroundImage: `url(/images/background-servicii-mobil.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      {/* Desktop background - visible only on desktop */}
+      <div 
+        className="hidden md:block absolute inset-0 z-0 opacity-[0.70] dark:opacity-[0.2] pointer-events-none"
+        style={{
+          backgroundImage: `url(/images/background-servicii.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

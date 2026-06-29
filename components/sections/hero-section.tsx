@@ -65,7 +65,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
             >
               <Zap className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground/80">Electrician Autorizat</span>
+              <span className="text-sm font-medium text-foreground/80">Electrician Profesionist</span>
             </motion.div>
 
             <motion.h1
@@ -77,7 +77,7 @@ export function HeroSection() {
               <span className="text-foreground">ElectroVlădescu</span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Instalații Electrice Profesionale
+                Cu noi aduci casa la lumină!
               </span>
             </motion.h1>
 
@@ -87,7 +87,7 @@ export function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground max-w-lg text-pretty"
             >
-              Instalații electrice sigure, moderne și realizate ca la carte. Cu noi aduci casa la lumină!
+              Instalații electrice sigure, moderne și realizate ca la carte. 
             </motion.p>
 
             <motion.div

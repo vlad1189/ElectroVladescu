@@ -20,12 +20,10 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         <ServicesSection />
-        <InteractivePanelSection />
         <GallerySection />
         <ReviewsSection />
         <FacebookSection />
         <WhyChooseSection />
-        <CalculatorSection />
         <ContactSection />
       </main>
       <FooterSection />
