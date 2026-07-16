@@ -9,19 +9,3 @@
   command = "npm run dev"
   port = 3000
   autoLaunch = true
-
-# Redirects for Next.js
-[[redirects]]
-  source = "/api/*"
-  destination = "/api/*"
-  status = 200
-
-[[redirects]]
-  source = "/_next/static/*"
-  destination = "/_next/static/*"
-  status = 200
-
-[[redirects]]
-  source = "/*"
-  destination = "/index.html"
-  status = 200
