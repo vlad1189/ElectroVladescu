@@ -15,12 +15,12 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
-  description: 'Electrician autorizat Tulcea - ElectroVlădescu. Instalații electrice complete, panouri electrice, iluminat LED, automatizări. Intervenții rapide în Tulcea, Delta Dunării și împrejurimi. Solicită ofertă gratuită!',
+  title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
+  description: 'Electrician autorizat Tulcea - Electrovladescu. Instalații electrice complete, panouri electrice, iluminat LED, automatizări. Intervenții rapide în Tulcea, Delta Dunării și împrejurimi. Solicită ofertă gratuită!',
   keywords: 'electrician tulcea, instalații electrice tulcea, electrician autorizat tulcea, panou electric tulcea, instalație casă tulcea, iluminat LED tulcea, automatizări electrice, electrician delta dunării, electrovladescu, instalații electrice românia, electrician profesionist, tablou electric, prize și întrerupătoare, iluminat interior exterior',
-  authors: [{ name: 'ElectroVlădescu S.R.L.' }],
-  creator: 'ElectroVlădescu S.R.L.',
-  publisher: 'ElectroVlădescu S.R.L.',
+  authors: [{ name: 'Electrovladescu S.R.L.' }],
+  creator: 'Electrovladescu S.R.L.',
+  publisher: 'Electrovladescu S.R.L.',
   formatDetection: {
     email: false,
     address: false,
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
+    title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
     description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED. Intervenții rapide în Tulcea și Delta Dunării.',
     url: 'https://electrovladescu.ro',
-    siteName: 'ElectroVlădescu',
+    siteName: 'Electrovladescu',
     locale: 'ro_RO',
     type: 'website',
     images: [
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
         url: '/images/logo.jpg',
         width: 800,
         height: 600,
-        alt: 'ElectroVlădescu - Electrician Tulcea',
+        alt: 'Electrovladescu - Electrician Tulcea',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Electrician Tulcea | ElectroVlădescu - Instalații Electrice Profesionale',
+    title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
     description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED.',
     images: ['/images/logo.jpg'],
   },
@@ -86,7 +86,7 @@ export const viewport = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "ElectroVlădescu S.R.L.",
+  "name": "Electrovladescu S.R.L.",
   "alternateName": "Electrician Tulcea",
   "image": "https://electrovladescu.ro/images/logo.jpg",
   "telephone": "+40755295009",
