@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Phone, Mail, MapPin, Send, MessageCircle, Clock } from "lucide-react"
+import { Phone, Mail, MapPin, Send, MessageCircle, Clock, AlertCircle, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -14,14 +14,47 @@ export function ContactSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setError(null)
+
+    const formData = new FormData(e.target as HTMLFormElement)
+    const data = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'A apărut o eroare')
+      }
+
+      setIsSubmitted(true)
+      
+      // If there's a mailto fallback, open it
+      if (result.mailtoLink) {
+        window.location.href = result.mailtoLink
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'A apărut o eroare. Te rugăm să încerci din nou.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -162,11 +195,19 @@ export function ContactSection() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && (
+                    <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-xl flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0" />
+                      <p className="text-sm text-destructive">{error}</p>
+                    </div>
+                  )}
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Nume complet *</Label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="Ion Popescu"
                         required
                         className="h-12"
@@ -176,6 +217,7 @@ export function ContactSection() {
                       <Label htmlFor="phone">Telefon *</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="+40 755 295 009"
                         required
@@ -188,6 +230,7 @@ export function ContactSection() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="email@exemplu.ro"
                       className="h-12"
@@ -198,6 +241,7 @@ export function ContactSection() {
                     <Label htmlFor="message">Mesaj *</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Descrie pe scurt ce lucrări ai nevoie..."
                       required
                       className="min-h-[150px] resize-none"
@@ -234,5 +278,4 @@ export function ContactSection() {
     </section>
   )
 }
-
 
