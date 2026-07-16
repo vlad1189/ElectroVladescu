@@ -4,6 +4,8 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  # Use v4 which doesn't require forms migration
+  pin = "4.6.1"
 
 [dev]
   command = "npm run dev"
