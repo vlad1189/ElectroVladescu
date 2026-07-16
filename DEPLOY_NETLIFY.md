@@ -1,4 +1,10 @@
-# Ghid Complet: Deploy pe Netlify
+# Ghid Complet: Deploy pe Netlify (GRATIS)
+
+## Soluție Gratuită: Netlify Forms
+
+Am schimbat la o soluție **100% gratuită** folosind **Netlify Forms** - nu ai nevoie de Formspree sau alte servicii plătite!
+
+---
 
 ## Pasul 1: Pregătește Repository-ul
 
@@ -13,6 +19,7 @@
 
 1. Mergi la [netlify.com](https://netlify.com)
 2. Apasă "Sign up" și înregistrează-te (poți folosi contul de GitHub)
+3. Este **complet gratuit** pentru site-uri statice
 
 ## Pasul 3: Conectează Repository-ul
 
@@ -29,34 +36,42 @@ Netlify va detecta automat că este un proiect Next.js. Setările ar trebui să 
 - **Build command:** `npm run build`
 - **Publish directory:** `.next`
 
-**NU modifica aceste setări!** Configurația este deja în fișierul `netlify.toml`.
+**NU modifica aceste setări!** Configurația este deja在 fișierul `netlify.toml`.
 
-## Pasul 5: Adaugă Variabila de Mediu (IMPORTANT!)
-
-În aceeași pagină de configurare:
-
-1. Apasă **"Add variable"** sau mergi la **"Environment variables"**
-2. Adaugă variabila:
-   - **Key:** `FORMSPREE_ENDPOINT`
-   - **Value:** `https://formspree.io/f/xreneonr`
-3. Apasă **"Save"** sau **"Add"**
-
-⚠️ **Această variabilă este CRITICĂ** - fără ea, formularul de contact nu va funcționa!
-
-## Pasul 6: Deploy
+## Pasul 5: Deploy
 
 1. Apasă butonul **"Deploy site"** sau **"Save and deploy"**
 2. Așteaptă 2-3 minute cât Netlify construiește site-ul
 3. Când apare mesajul **"Published"**, site-ul tău este live!
 
-## Pasul 7: Testează Formularul
+## Pasul 6: Activează Netlify Forms (IMPORTANT!)
+
+După ce site-ul este live:
+
+1. Mergi la **"Site settings"** → **"Forms"**
+2. Apasă **"Add form"** sau așteaptă ca Netlify să detecteze formularul automat
+3. Formularul "contact" ar trebui să apară automat (este deja configurat în cod)
+
+## Pasul 7: Configurează Notificările pe Email
+
+Pentru a primi email-uri când cineva completează formularul:
+
+1. În Netlify, mergi la **"Site settings"** → **"Forms"** → **"Form notifications"**
+2. Apasă **"Add notification"** → **"Email notification"**
+3. Configurează:
+   - **Email to:** `leontevlad2175@gmail.com`
+   - **Email subject:** `Nouă cerere de ofertă - ElectroVladescu`
+   - **Include all form fields:** ✅ (bifează)
+4. Apasă **"Save"**
+
+## Pasul 8: Testează Formularul
 
 1. Deschide site-ul (vei primi un link de genul `https://nume-site.netlify.app`)
 2. Mergi la secțiunea de contact
 3. Completează formularul cu date de test
 4. Verifică email-ul `leontevlad2175@gmail.com` - ar trebui să primești mesajul
 
-## Pasul 8: Configurează Domeniu Personalizat (Opțional)
+## Pasul 9: Configurează Domeniu Personalizat (Opțional)
 
 Dacă vrei un domeniu propriu (ex: `electrovladescu.ro`):
 
@@ -65,31 +80,48 @@ Dacă vrei un domeniu propriu (ex: `electrovladescu.ro`):
 3. Introdu domeniul tău
 4. Urmează instrucțiunile pentru a configura DNS-ul la providerul tău de domeniu
 
+---
+
+## Ce este Netlify Forms?
+
+Netlify Forms este un serviciu **gratuit** care:
+- ✅ Prelucrează automat formularele din site-ul tău
+- ✅ Stochează submissions-urile în dashboard-ul Netlify
+- ✅ Trimite email-uri când primești mesaje noi
+- ✅ Nu necesită backend sau API-uri externe
+- ✅ 100% gratuit pentru până la 100 submissions/lună
+
+## Structura email-ului primit:
+
+```
+Nume: [numele completat]
+Telefon: [numărul de telefon]
+Email: [email-ul completat]
+Mesaj: [mesajul completat]
+```
+
+---
+
 ## Actualizări Viitoare
 
 Orice modificare push-uită pe GitHub (branch main) va fi automat deploy-uită pe Netlify în 1-2 minute.
 
-## Verificări Importante
-
-- ✅ Formularul de contact funcționează
-- ✅ Toate imaginile se încarcă corect
-- ✅ Site-ul este responsive (arată bine pe mobil)
-- ✅ SEO este configurat corect
-
 ## Depanare
 
 **Dacă formularul nu funcționează:**
-1. Verifică dacă variabila `FORMSPREE_ENDPOINT` este setată în Netlify
-2. Verifică consola browser-ului (F12) pentru erori
-3. Asigură-te că endpoint-ul Formspree este corect
+1. Asigură-te că site-ul este deploy-it pe Netlify (nu rulează local)
+2. Verifică dacă formularul este detectat în Netlify → Forms
+3. Verifică consola browser-ului (F12) pentru erori
 
-**Dacă site-ul nu se încarcă:**
-1. Verifică deployment logs în Netlify
-2. Asigură-te că build-ul a fost successful
-3. Încearcă să redeploy-ezi site-ul din Netlify
+**Dacă nu primești email-uri:**
+1. Verifică setările de notificare în Netlify → Forms → Form notifications
+2. Verifică spam-ul
+3. Asigură-te că email-ul este corect configurat
+
+---
 
 ## Link-uri Utile
 
+- [Netlify Forms Documentation](https://docs.netlify.com/forms/setup/)
 - [Netlify Documentation](https://docs.netlify.com/)
 - [Next.js on Netlify](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/)
-- [Formspree Documentation](https://help.formspree.io/)

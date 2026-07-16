@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Phone, Mail, MapPin, Send, MessageCircle, Clock, AlertCircle, CheckCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Send, MessageCircle, Clock, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -21,37 +21,27 @@ export function ContactSection() {
     setIsSubmitting(true)
     setError(null)
 
-    const formData = new FormData(e.target as HTMLFormElement)
-    const data = {
-      name: formData.get('name') as string,
-      phone: formData.get('phone') as string,
-      email: formData.get('email') as string,
-      message: formData.get('message') as string,
-    }
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
 
     try {
-      const response = await fetch('/api/contact', {
+      // Submit to Netlify Forms
+      const response = await fetch('/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(data),
+        body: new URLSearchParams(formData as any).toString(),
       })
 
-      const result = await response.json()
-
       if (!response.ok) {
-        throw new Error(result.error || 'A apărut o eroare')
+        throw new Error('A apărut o eroare la trimitere')
       }
 
       setIsSubmitted(true)
-      
-      // If there's a mailto fallback, open it
-      if (result.mailtoLink) {
-        window.location.href = result.mailtoLink
-      }
+      form.reset()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'A apărut o eroare. Te rugăm să încerci din nou.')
+      setError('A apărut o eroare. Te rugăm să încerci din nou sau sună-ne direct.')
     } finally {
       setIsSubmitting(false)
     }
@@ -194,7 +184,16 @@ export function ContactSection() {
                   <p className="text-muted-foreground">Te vom contacta în curând.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  className="space-y-6"
+                >
+                  {/* Hidden inputs for Netlify Forms */}
+                  <input type="hidden" name="form-name" value="contact" />
+
                   {error && (
                     <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-xl flex items-center gap-3">
                       <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0" />
