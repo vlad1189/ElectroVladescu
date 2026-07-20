@@ -74,7 +74,7 @@ export function HeroSection() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance"
             >
-              <span className="text-foreground">ElectroVlădescu</span>
+              <span className="text-foreground">ELECTROVLADESCU</span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Cu noi aduci casa la lumină!

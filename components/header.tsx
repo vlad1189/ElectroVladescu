@@ -54,7 +54,7 @@ export function Header() {
                 className="rounded-xl"
               />
               <div className="hidden sm:block">
-                <span className="font-bold text-foreground">ElectroVlădescu</span>
+                <span className="font-bold text-foreground">ELECTROVLADESCU</span>
                 <p className="text-xs text-muted-foreground">Electrician Profesionist</p>
               </div>
             </a>

@@ -151,7 +151,7 @@ export function FooterSection() {
         <div className="pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-background/60">
-              &copy; {currentYear} ElectroVlădescu S.R.L. Toate drepturile rezervate.
+              &copy; {currentYear} ELECTROVLADESCU S.R.L. Toate drepturile rezervate.
             </p>
             <p className="text-sm text-background/60">
               Electrician autorizat ANRE

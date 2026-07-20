@@ -72,7 +72,7 @@ export function FacebookSection() {
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8"
           >
             <a
-              href="https://www.facebook.com/Electrovladescu"
+              href="https://www.facebook.com/profile.php?id=61591647570181"
               target="_blank"
               rel="noopener noreferrer"
             >
