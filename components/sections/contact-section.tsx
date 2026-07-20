@@ -25,13 +25,21 @@ export function ContactSection() {
     const formData = new FormData(form)
 
     try {
-      // Submit to Netlify Forms
-      const response = await fetch('/', {
+      // Submit to Formsubmit.co (free email service)
+      const response = await fetch('https://formsubmit.co/ajax/leontevlad2175@gmail.com', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: new URLSearchParams(formData as any).toString(),
+        body: JSON.stringify({
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email'),
+          message: formData.get('message'),
+          _subject: 'Nouă cerere de ofertă - ElectroVlădescu',
+          _template: 'table',
+        }),
       })
 
       if (!response.ok) {
