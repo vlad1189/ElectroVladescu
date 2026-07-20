@@ -134,7 +134,7 @@ export function FooterSection() {
               <li>
                 <a href="mailto:contact@electrovladescu.ro" className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm">
                   <Mail className="w-4 h-4 flex-shrink-0" />
-                  contact@electrovladescu.ro
+                  electrovladescusrl@gmail.com
                 </a>
               </li>
               <li>
