@@ -26,7 +26,7 @@ export function ContactSection() {
 
     try {
       // Submit to Formsubmit.co (free email service)
-      const response = await fetch('https://formsubmit.co/ajax/leontevlad2175@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/electrovladescusrl@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
