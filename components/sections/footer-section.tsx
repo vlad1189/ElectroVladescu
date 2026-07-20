@@ -49,7 +49,7 @@ export function FooterSection() {
                 className="rounded-xl"
               />
               <div>
-                <h3 className="font-bold text-lg">ElectroVlădescu</h3>
+                <h3 className="font-bold text-lg">ELECTROVLADESCU</h3>
                 <p className="text-sm text-background/60">S.R.L.</p>
               </div>
             </div>
