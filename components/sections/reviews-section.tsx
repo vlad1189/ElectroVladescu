@@ -20,7 +20,7 @@ const reviews = [
     avatar: "AR",
     rating: 5,
     text: "Instalația electrică refăcută complet și foarte profesionist. Totul organizat și curat, cu explicații pe parcurs.",
-    location: "Tulcea",
+    location: "",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const reviews = [
     avatar: "AP",
     rating: 5,
     text: "De cauti in Tulcea un electrician corect si meserias poti apela cu incredere la Cristi! Electrovladescu este cea mai buna alegere",
-    location: "Tulcea",
+    location: "",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const reviews = [
     avatar: "CB",
     rating: 5,
     text: "Recomand. ✅ Eficiență, curățenie, amabilitate și echipa de încredere. M-a ajutat la ceva lucrări, dar după ce s-a mutat la Tulcea, mi-a oferit consultanță prin telefon și am rezolvat problema. Este echipa pe care o cauți, o vrei!",
-    location: "Isaccea",
+    location: "",
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const reviews = [
     avatar: "HC",
     rating: 5,
     text: "Seriozitate, conștiinciozitate, sinceritate, curățenie-sunt doar câteva cuvinte care definesc profesionalismul.Un mare câștig pentru zona Tulcea!!!!",
-    location: "Tulcea",
+    location: "",
   },
   {
     id: 6,
