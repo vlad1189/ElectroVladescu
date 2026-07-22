@@ -180,7 +180,7 @@ export function HeroSection() {
                   
                   <Image
                     src="/images/cristi-portrait.jpg"
-                    alt="Cristi - Electrician Autorizat ElectroVlădescu"
+                    alt="Cristi - Electrician "
                     width={400}
                     height={400}
                     className="rounded-full shadow-2xl object-cover aspect-square border-4 border-card"

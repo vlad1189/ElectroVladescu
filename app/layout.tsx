@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
-  description: 'Electrician autorizat Tulcea - Electrovladescu. Instalații electrice complete, panouri electrice, iluminat LED, automatizări. Intervenții rapide în Tulcea, Delta Dunării și împrejurimi. Solicită ofertă gratuită!',
+  description: 'Electrician Tulcea - Electrovladescu. Cristi Vlădescu este electrician profesionist în Tulcea, specializat în instalații electrice sigure și eficiente pentru orice proiect.',
   keywords: 'electrician tulcea, instalații electrice tulcea, electrician autorizat tulcea, panou electric tulcea, instalație casă tulcea, iluminat LED tulcea, automatizări electrice, electrician delta dunării, electrovladescu, instalații electrice românia, electrician profesionist, tablou electric, prize și întrerupătoare, iluminat interior exterior',
   authors: [{ name: 'Electrovladescu S.R.L.' }],
   creator: 'Electrovladescu S.R.L.',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
-    description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED. Intervenții rapide în Tulcea și Delta Dunării.',
+    description: 'Electrician în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED. Intervenții rapide în Tulcea și Delta Dunării.',
     url: 'https://electrovladescu.ro',
     siteName: 'Electrovladescu',
     locale: 'ro_RO',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Electrician Tulcea | Electrovladescu - Instalații Electrice Profesionale',
-    description: 'Electrician autorizat în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED.',
+    description: 'Electrician în Tulcea. Instalații electrice complete, panouri electrice, iluminat LED.',
     images: ['/images/logo.jpg'],
   },
   robots: {
@@ -132,7 +132,7 @@ const localBusinessSchema = {
     }
   ],
   "priceRange": "$$",
-  "description": "Electrician autorizat ANRE în Tulcea. Oferim servicii complete de instalații electrice pentru locuințe și spații comerciale: panouri electrice, instalații complete, iluminat LED, automatizări electrice.",
+  "description": "Electrician în Tulcea. Oferim servicii complete de instalații electrice pentru locuințe și spații comerciale: panouri electrice, instalații complete, iluminat LED, automatizări electrice.",
   "founder": {
     "@type": "Person",
     "name": "Cristi Vlădescu"
