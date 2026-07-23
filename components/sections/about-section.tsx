@@ -5,12 +5,6 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Award, Shield, Clock, Wrench } from "lucide-react"
 
-const timeline = [
-  { year: "2014", title: "Începutul călătoriei", description: "Prima lucrare electrică profesională" },
-  { year: "2017", title: "Autorizare ANRE", description: "Obținerea autorizației de electrician" },
-  { year: "2020", title: "500+ Proiecte", description: "Milestone important în carieră" },
-  { year: "2024", title: "ElectroVlădescu S.R.L.", description: "Înființarea companiei" },
-]
 
 const features = [
   {

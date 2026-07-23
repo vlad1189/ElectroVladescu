@@ -116,7 +116,7 @@ export function ContactSection() {
               </a>
 
               <a
-                href="mailto:contact@electrovladescu.ro"
+                href="mailto:electrovladescusrl@gmail.com"
                 className="flex items-center gap-4 p-5 bg-card rounded-xl border border-border hover:border-secondary/50 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
